@@ -28,7 +28,7 @@ app.layout = html.Div([
     # Header
     html.Div([
         html.H1("Disease Symptom Dashboard", className="display-4 text-center mb-4"),
-        html.P("Interactive visualization of disease patterns, symptoms, and patient demographics", 
+        html.P("Interactive visualization of disease patterns, symptoms, $ patient demographics @DevDK", 
                className="lead text-center mb-5")
     ], className="container mt-4"),
     
