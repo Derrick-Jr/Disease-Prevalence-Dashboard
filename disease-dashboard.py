@@ -7,12 +7,12 @@ from dash import dcc, html, Input, Output, State
 import dash_bootstrap_components as dbc
 import numpy as np
 
+# Add this near the top where you initialize your app
+app = dash.Dash(__name__, external_stylesheets=[dbc.themes.FLATLY])
+server = app.server  # Expose the Flask server for Render
 
 # Load the data
 data = pd.read_csv('Disease_symptom_and_patient_profile_dataset.csv')
-
-# Initialize the Dash app with a modern theme
-app = dash.Dash(__name__, external_stylesheets=[dbc.themes.FLATLY])
 
 # Color schemes for consistency
 color_palette = px.colors.qualitative.Bold
@@ -283,4 +283,6 @@ def update_graphs(n_clicks, age_range, gender, outcome, selected_diseases):
 
 # Run the app
 if __name__ == '__main__':
-    app.run(debug=True)
+    import os
+    port = int(os.environ.get("PORT", 8050))
+    app.run_server(debug=False, host='0.0.0.0', port=port)
